@@ -1,6 +1,9 @@
-const miCarta = document.getElementById("mi_carta");
 
-miCarta.addEventListener("click", () => {
-    miCarta.classList.toggle("is-flipped");
+const cartas = document.querySelectorAll(".carta-inner");
+
+cartas.forEach((carta) => {
+    carta.addEventListener("click", () => {
+        carta.classList.toggle("is-flipped");
+    });
 });
 
