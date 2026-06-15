@@ -1,5 +1,5 @@
-const cartaTrasera = document.getElementById("carta_trasera");
+const miCarta = document.getElementById("mi_carta");
 
-cartaTrasera.addEventListener("click", () => {
-    cartaTrasera.style.transform = "rotateY(180deg)";
+miCarta.addEventListener("click", () => {
+    miCarta.classList.toggle("is-flipped");
 });
