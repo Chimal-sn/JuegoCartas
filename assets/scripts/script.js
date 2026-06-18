@@ -5,10 +5,26 @@ let primeracarta = "";
 let primeracartaHTML = null;
 let segundacarta = "";
 let puntos = 0;
-const textopuntaje = document.getElementById("puntaje")
+let segundos = 0;
+let cronometro;
+let juegoiniciado = false;
+const textopuntaje = document.getElementById("puntaje");
+const textotimepo = document.getElementById("tiempo");
+
+function iniciarCronometro() {
+    cronometro = setInterval(() => {
+        segundos++;
+        textotimepo.textContent = segundos;
+    }, 1000);
+}
 
 cartas.forEach((carta) => {
     carta.addEventListener("click", () => {
+
+        if (juegoiniciado == false) {
+            iniciarCronometro();
+            juegoiniciado = true;
+        }
 
         if (!carta.classList.contains("is-flipped")) {
             if (cartasactivas == 0) {
@@ -26,8 +42,6 @@ cartas.forEach((carta) => {
                     if (primeracarta == segundacarta) {
                         primeracartaHTML.classList.toggle("ocultar");
                         carta.classList.toggle("ocultar");
-                        puntos += 1;
-                        textopuntaje.textContent = puntos;
                     } else {
                         primeracartaHTML.classList.toggle("is-flipped");
                         carta.classList.toggle("is-flipped");
