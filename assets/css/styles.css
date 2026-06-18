@@ -11,10 +11,20 @@ body {
     height: 100dvh;
     overflow: hidden;    
     display: grid;
-    padding: 30px; 
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    padding: 40px; 
+    grid-template-columns: repeat(4, minmax(0, 220px));
+    grid-template-rows: repeat(3, minmax(0, 350px));
+    justify-content: center;
+    align-content: center;
     gap: 10px;
+}
+
+@media (max-width: 500px) {
+    body {
+        grid-template-rows: repeat(3, auto);
+        padding: 10px;
+        gap: 6px;
+    }
 }
 
 .estadisticas{
@@ -27,9 +37,9 @@ body {
 .carta {
     display: flex;
     perspective: 2000px;
-    width: 220px;
+    width: 100%;
+    max-width: 220px;
     height: auto;
-    max-width: 100%;
     max-height: 100%;
     aspect-ratio: 220 / 350; 
     margin: auto; 
