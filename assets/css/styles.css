@@ -4,29 +4,35 @@
     padding: 0;
 }
 
-body{
+body {
     position: relative;
     background: #7e7e7e;
     width: 100dvw;
     height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;    
+    display: grid;
+    padding: 30px; 
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 10px;
 }
 
 .estadisticas{
     position: absolute;
-    padding: 20px;
+    padding: 10px;
     top: 0;
     right: 0;
 }
 
 .carta {
     display: flex;
-    height: 350px;
-    width: 220px;
     perspective: 2000px;
+    width: 220px;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 220 / 350; 
+    margin: auto; 
 }
 
 .carta-inner {

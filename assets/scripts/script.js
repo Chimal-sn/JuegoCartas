@@ -5,7 +5,6 @@ let primeracarta = "";
 let primeracartaHTML = null;
 let segundacarta = "";
 let puntos = 0;
-const cartasvolteadas = [];
 const textopuntaje = document.getElementById("puntaje")
 
 cartas.forEach((carta) => {
