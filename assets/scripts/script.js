@@ -10,8 +10,8 @@ let cronometro;
 let juegoiniciado = false;
 const textopuntaje = document.getElementById("puntaje");
 const textotimepo = document.getElementById("tiempo");
-
-
+const menu = document.getElementById("menu");
+const tiempo_menu = document.getElementById("tiempo_menu");
 
 barajar();
 
@@ -34,6 +34,24 @@ function iniciarCronometro() {
     }, 1000);
 }
 
+function reiniciarJuego() {
+    segundos = 0;
+    textotimepo.textContent = segundos;
+    cartasactivas = 0;
+    primeracarta = "";
+    primeracartaHTML = null;
+    segundacarta = "";
+    puntos = 0;
+    juegoiniciado = false;
+
+    cartas.forEach((carta) => {
+        carta.classList.remove("is-flipped");
+        carta.classList.remove("ocultar");
+    });
+    barajar();
+    menu.classList.remove("menu_activo");
+}
+
 cartas.forEach((carta) => {
     carta.addEventListener("click", () => {
 
@@ -48,7 +66,6 @@ cartas.forEach((carta) => {
                 cartasactivas++;
                 primeracarta = carta.dataset.pareja;
                 primeracartaHTML = carta;
-                console.log(primeracarta);
 
             } else if (cartasactivas == 1) {
                 segundacarta = carta.dataset.pareja;
@@ -58,6 +75,13 @@ cartas.forEach((carta) => {
                     if (primeracarta == segundacarta) {
                         primeracartaHTML.classList.toggle("ocultar");
                         carta.classList.toggle("ocultar");
+                        puntos++;
+
+                        if (puntos == 6) {
+                            clearInterval(cronometro);
+                            menu.classList.toggle("menu_activo");
+                            tiempo_menu.textContent = segundos;
+                        }
                     } else {
                         primeracartaHTML.classList.toggle("is-flipped");
                         carta.classList.toggle("is-flipped");
@@ -66,6 +90,7 @@ cartas.forEach((carta) => {
                     cartasactivas = 0;
                 }, 1000);
             }
+
         }
 
     });
