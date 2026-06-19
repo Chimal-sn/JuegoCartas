@@ -11,6 +11,22 @@ let juegoiniciado = false;
 const textopuntaje = document.getElementById("puntaje");
 const textotimepo = document.getElementById("tiempo");
 
+
+
+barajar();
+
+function barajar() {
+    const cartas = document.querySelectorAll('.carta');
+    const totalCartas = cartas.length;
+
+    cartas.forEach(carta => {
+        let posicionAleatoria = Math.floor(Math.random() * totalCartas);
+        carta.style.order = posicionAleatoria;
+    });
+}
+
+
+
 function iniciarCronometro() {
     cronometro = setInterval(() => {
         segundos++;
